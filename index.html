@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Wishlist</title>
+    <script type="module" crossorigin src="/travel-wishlist/assets/index-BEWIMhti.js"></script>
+    <link rel="stylesheet" crossorigin href="/travel-wishlist/assets/index-BLqB-tfC.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="site-title">Travel Wishlist</h1>
+        <p class="site-tagline">Your personal collection of dream destinations</p>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <!-- ── Add / Edit Form ─────────────────────────────────── -->
+      <section class="form-section">
+        <h2 id="form-title">Add Destination</h2>
+        <form id="destination-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Destination Name</label>
+              <input type="text" id="name" placeholder="e.g. Kyoto" required />
+            </div>
+            <div class="form-group">
+              <label for="region">Region</label>
+              <input type="text" id="region" placeholder="e.g. Asia" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="3" placeholder="Why do you want to go here?"></textarea>
+          </div>
+          <div class="form-group form-group--small">
+            <label for="rating">Rating (1–5)</label>
+            <input type="number" id="rating" min="1" max="5" placeholder="1–5" required />
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="submit-btn">Add Destination</button>
+            <button type="button" id="cancel-btn" class="btn-secondary hidden">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ── Filter Bar ──────────────────────────────────────── -->
+      <div class="filter-bar">
+        <label for="filter-region">Filter by region:</label>
+        <select id="filter-region">
+          <option value="">All Regions</option>
+        </select>
+      </div>
+
+      <!-- ── Destinations List ───────────────────────────────── -->
+      <section class="destinations-section">
+        <h2>My Destinations</h2>
+        <div id="destinations-list" class="destinations-grid">
+          <!-- Cards are rendered here by JavaScript -->
+        </div>
+        <p id="empty-message" class="empty-message hidden">
+          No destinations yet. Add one above!
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Travel Wishlist &mdash; School Midterm Project</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

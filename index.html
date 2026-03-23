@@ -15,35 +15,55 @@
     </header>
 
     <main class="container">
-      <section class="about">
-        <h2>About the App</h2>
-        <p>
-          Travel Wishlist is a simple browser-based app that lets you track the places
-          you want to visit. Save destinations, write notes about why you want to go,
-          give each place a rating, and organize everything by region — all stored
-          directly in your browser with no account required.
+
+      <!-- ── Add / Edit Form ─────────────────────────────────── -->
+      <section class="form-section">
+        <h2 id="form-title">Add Destination</h2>
+        <form id="destination-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Destination Name</label>
+              <input type="text" id="name" placeholder="e.g. Kyoto" required />
+            </div>
+            <div class="form-group">
+              <label for="region">Region</label>
+              <input type="text" id="region" placeholder="e.g. Asia" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="3" placeholder="Why do you want to go here?"></textarea>
+          </div>
+          <div class="form-group form-group--small">
+            <label for="rating">Rating (1–5)</label>
+            <input type="number" id="rating" min="1" max="5" placeholder="1–5" required />
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="submit-btn">Add Destination</button>
+            <button type="button" id="cancel-btn" class="btn-secondary hidden">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ── Filter Bar ──────────────────────────────────────── -->
+      <div class="filter-bar">
+        <label for="filter-region">Filter by region:</label>
+        <select id="filter-region">
+          <option value="">All Regions</option>
+        </select>
+      </div>
+
+      <!-- ── Destinations List ───────────────────────────────── -->
+      <section class="destinations-section">
+        <h2>My Destinations</h2>
+        <div id="destinations-list" class="destinations-grid">
+          <!-- Cards are rendered here by JavaScript -->
+        </div>
+        <p id="empty-message" class="empty-message hidden">
+          No destinations yet. Add one above!
         </p>
       </section>
 
-      <section class="features">
-        <h2>Planned Features</h2>
-        <ul class="feature-list">
-          <li>Add destinations</li>
-          <li>Edit destinations</li>
-          <li>Delete destinations</li>
-          <li>Add notes and ratings</li>
-          <li>Filter by region</li>
-        </ul>
-      </section>
-
-      <section class="status">
-        <h2>Project Status</h2>
-        <p>
-          This is the Week 7 setup and deployment phase. The full application
-          will be built in Week 8.
-        </p>
-        <span class="badge">Coming Soon</span>
-      </section>
     </main>
 
     <footer class="site-footer">

@@ -6,16 +6,19 @@
 }
 
 :root {
-  --color-bg: #f5f7fa;
-  --color-surface: #ffffff;
-  --color-primary: #2563eb;
+  --color-bg:           #f5f7fa;
+  --color-surface:      #ffffff;
+  --color-primary:      #2563eb;
   --color-primary-dark: #1d4ed8;
-  --color-text: #1e293b;
-  --color-muted: #64748b;
-  --color-border: #e2e8f0;
-  --color-accent: #dbeafe;
-  --radius: 10px;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --color-danger:       #ef4444;
+  --color-danger-dark:  #dc2626;
+  --color-text:         #1e293b;
+  --color-muted:        #64748b;
+  --color-border:       #e2e8f0;
+  --color-accent:       #dbeafe;
+  --color-star:         #f59e0b;
+  --radius:             10px;
+  --shadow:             0 2px 8px rgba(0, 0, 0, 0.08);
   font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: var(--color-text);
@@ -28,10 +31,15 @@ body {
   flex-direction: column;
 }
 
+/* ── Utility ──────────────────────────────────────────────── */
+.hidden {
+  display: none !important;
+}
+
 /* ── Layout ───────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 720px;
+  max-width: 780px;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
@@ -65,7 +73,7 @@ main.container {
   opacity: 0.88;
 }
 
-/* ── Sections ─────────────────────────────────────────────── */
+/* ── Section shell ────────────────────────────────────────── */
 section {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -78,54 +86,226 @@ section h2 {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-primary);
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--color-accent);
 }
 
-section p {
-  color: var(--color-text);
-  font-size: 0.97rem;
+/* ── Form ─────────────────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-/* ── Feature list ─────────────────────────────────────────── */
-.feature-list {
-  list-style: none;
+.form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
 }
 
-.feature-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-size: 0.97rem;
+/* Make the rating field narrower */
+.form-group--small {
+  max-width: 160px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-text);
 }
 
-.feature-list li::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  min-width: 10px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-bg);
+  transition: border-color 0.15s;
 }
 
-/* ── Badge ────────────────────────────────────────────────── */
-.badge {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.3rem 0.85rem;
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: #fff;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.2rem;
+  transition: background-color 0.15s, opacity 0.15s;
+}
+
+/* Primary (blue) button — used for submit */
+#submit-btn {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+#submit-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Secondary (outline) button — used for cancel */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg);
+}
+
+/* ── Filter bar ───────────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.filter-bar select {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* ── Destinations grid ────────────────────────────────────── */
+.destinations-section {
+  /* Remove default section padding-top so heading sits flush */
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Destination card ─────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.card-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.card-region {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.card-notes {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  flex: 1;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-rating {
+  color: var(--color-star);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Edit button */
+.btn-edit {
   background-color: var(--color-accent);
   color: var(--color-primary-dark);
-  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
   font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+}
+
+.btn-edit:hover {
+  background-color: #bfdbfe;
+}
+
+/* Delete button */
+.btn-delete {
+  background-color: #fee2e2;
+  color: var(--color-danger-dark);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.82rem;
+}
+
+.btn-delete:hover {
+  background-color: #fecaca;
+}
+
+/* ── Empty state message ──────────────────────────────────── */
+.empty-message {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.97rem;
+  padding: 1.5rem 0;
 }
 
 /* ── Footer ───────────────────────────────────────────────── */
@@ -139,12 +319,22 @@ section p {
 }
 
 /* ── Mobile tweaks ────────────────────────────────────────── */
-@media (max-width: 480px) {
+@media (max-width: 540px) {
+  /* Stack name + region inputs vertically */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
   section {
     padding: 1.25rem 1.1rem;
   }
 
   .site-header {
     padding: 2rem 0 1.75rem;
+  }
+
+  /* Single column card grid on very small screens */
+  .destinations-grid {
+    grid-template-columns: 1fr;
   }
 }
